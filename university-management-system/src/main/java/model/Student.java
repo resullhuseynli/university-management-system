@@ -9,7 +9,7 @@ public class Student extends Person {
 
     private Course[] courses;
 
-    private Double grades;
+    private Double[] grades;
 
     public Student() {}
 
@@ -39,23 +39,59 @@ public class Student extends Person {
         if (courses == null) {
             courses = new Course[1];
             courses[0] = course;
+            grades = new Double[1];
         } else {
             Course[] newCourses = new Course[courses.length + 1];
+            Double[] newGrades = new Double[grades.length + 1];
             for (int i = 0; i < courses.length; i++) {
                 newCourses[i] = courses[i];
+                newGrades[i] = grades[i];
             }
             newCourses[courses.length] = course;
             this.courses = newCourses;
         }
     }
 
-    public Double getGrades() {
-        return grades;
+    public void updateGrades(int courseCode, Double newGrade) {
+
+        for (int i = 0; i < courses.length; i++) {
+            if (courses[i] == null) {
+                System.out.println("Course not found");
+                break;
+            }
+            if (courses[i].getCourseCode() == courseCode) {
+                grades[i] = newGrade;
+                break;
+            }
+        }
     }
 
-    public void setGrades(Double grades) {
-        this.grades = grades;
+
+    public void updateGrades(String courseName, Double newGrade) {
+
+        for (int i = 0; i < courses.length; i++) {
+            if (courses[i] == null) {
+                System.out.println("Course not found");
+                break;
+            }
+            if (courses[i].getCourseName().equalsIgnoreCase(courseName)) {
+                grades[i] = newGrade;
+                break;
+            }
+        }
     }
+
+    public Double getGPA() {
+        double sum = 0.0;
+        for (Double grade : grades) {
+            if (grade == null) {
+                break;
+            }
+            sum += grade;
+        }
+        return sum / grades.length;
+    }
+
 
     @Override
     public boolean equals(Object o) {

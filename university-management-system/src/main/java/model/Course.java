@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Course {
 
-    private String courseCode;
+    private int courseCode;
 
     private String courseName;
 
@@ -16,7 +16,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(String courseCode, String courseName, Professor professor) {
+    public Course(int courseCode, String courseName, Professor professor) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.professor = professor;
@@ -37,11 +37,11 @@ public class Course {
         }
     }
 
-    public String getCourseCode() {
+    public int getCourseCode() {
         return courseCode;
     }
 
-    public void setCourseCode(String courseCode) {
+    public void setCourseCode(int courseCode) {
         this.courseCode = courseCode;
     }
 

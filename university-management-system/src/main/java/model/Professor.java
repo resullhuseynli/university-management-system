@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Professor extends Person {
 
-    public String department;
+    private String department;
     private String[] subjects;
 
     public Professor() {
@@ -29,7 +29,14 @@ public class Professor extends Person {
             newSubjects[subjects.length] = subject;
             subjects = newSubjects;
         }
+    }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String[] getSubjects() {

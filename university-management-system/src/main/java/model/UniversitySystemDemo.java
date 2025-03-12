@@ -8,7 +8,7 @@ public class UniversitySystemDemo {
         Student student1 = new Student("S001", "John Doe", 20, "Computer Science");
         Student student2 = new Student("S002", "Jane Doe", 21, "Computer Science");
         Professor professor1 = new Professor("P001", "Dr. John Doe", 40, "Computer Science");
-        Course course1 = new Course("CS101", "Introduction to Computer Science", professor1);
+        Course course1 = new Course(1, "Introduction to Computer Science", professor1);
 
         professor1.addSubjects("Calculus");
 
