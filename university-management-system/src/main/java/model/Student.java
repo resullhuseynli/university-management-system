@@ -4,16 +4,17 @@ public class Student extends Person {
 
     private String major;
 
-    public Student(int id, String name, String surname, int age, Double grades, String[] courses, String major) {
-        super(id, name, surname, age);
-        this.grades = grades;
-        this.courses = courses;
-        this.major = major;
-    }
-
     private String[] courses;
 
     private Double grades;
+
+    public Student() {}
+
+    public Student(int id, String name, String surname, int age, Double grades,String major) {
+        super(id, name, surname, age);
+        this.grades = grades;
+        this.major = major;
+    }
 
     public Student(int id, String name, String surname, int age) {
         super(id, name, surname, age);
@@ -31,8 +32,19 @@ public class Student extends Person {
         return courses;
     }
 
-    public void setCourses(String[] courses) {
-        this.courses = courses;
+    public void enrollCourses(String course) {
+
+        if (courses == null) {
+            courses = new String[1];
+            courses[0] = course;
+        } else {
+            String[] newCourses = new String[courses.length + 1];
+            for (int i = 0; i < courses.length; i++) {
+                newCourses[i] = courses[i];
+            }
+            newCourses[courses.length] = course;
+            this.courses = newCourses;
+        }
     }
 
     public Double getGrades() {
