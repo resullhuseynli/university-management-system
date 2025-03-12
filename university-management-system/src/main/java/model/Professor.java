@@ -1,23 +1,22 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Professor extends Person {
 
     public String department;
     private String[] subjects;
 
-    public String[] getSubjects() {
-        return subjects;
-    }
-
     public Professor() {
-
     }
 
-    public String[] getSubjectList() {
-        return subjects;
+    public Professor(String id, String fullName, int age, String department) {
+        super(id, fullName, age);
+        this.department = department;
     }
 
-    public String[] addSubjects(String subject) {
+    public void addSubjects(String subject) {
 
         if (subjects == null) {
             subjects = new String[1];
@@ -29,10 +28,31 @@ public class Professor extends Person {
             }
             newSubjects[subjects.length] = subject;
             subjects = newSubjects;
-            return subjects;
         }
 
+    }
+
+    public String[] getSubjects() {
         return subjects;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Professor professor = (Professor) o;
+        return Objects.equals(department, professor.department) && Objects.deepEquals(subjects, professor.subjects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), department, Arrays.hashCode(subjects));
+    }
+
+    @Override
+    public String toString() {
+        return "Professor:" + '\n' +
+                "Department: " + department + '\n' +
+                "Subjects: " + Arrays.toString(subjects);
+    }
 }
