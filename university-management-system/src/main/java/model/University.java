@@ -31,7 +31,7 @@ public class University {
         }
     }
 
-    public String getPeople() {
+    public void getPeople() {
         StringBuilder result = new StringBuilder();
         for (Person person : people) {
             if (person == null) {
@@ -39,20 +39,20 @@ public class University {
             }
             result.append(person.getFullName()).append("\n");
         }
-        return result.toString();
+        System.out.println(result);
     }
 
-    public String getPeopleById(String id) {
+    public void getPeopleById(String id) {
 
         for (Person person : people) {
             if (person == null) {
                 break;
             }
             if (person.getId().equals(id)) {
-                return person.getFullName();
+                System.out.println(person.getFullName());
             }
         }
-        return "Person not found";
+        System.out.println("Person not found");
     }
 
     public void addCourses(Course course) {
