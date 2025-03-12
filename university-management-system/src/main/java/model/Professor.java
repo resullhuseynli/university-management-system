@@ -1,28 +1,38 @@
 package model;
 
-public class Professor {
-    private String department;
-    private String[] subject;
+public class Professor extends Person {
 
-    public Professor(int id, String name,String surname,int age, String department,String[] subject){
-        this.department=department;
-        this.subject=subject;
+    public String department;
+    private String[] subjects;
+
+    public String[] getSubjects() {
+        return subjects;
     }
 
-    public String[] getSubject() {
-        return subject;
+    public Professor() {
+
     }
 
-    public void setSubject(String[] subject) {
-        this.subject = subject;
+    public String[] getSubjectList() {
+        return subjects;
     }
 
-    public String getDepartment() {
-        return department;
+    public String[] addSubjects(String subject) {
+
+        if (subjects == null) {
+            subjects = new String[1];
+            subjects[0] = subject;
+        } else {
+            String[] newSubjects = new String[subjects.length + 1];
+            for (int i = 0; i < subjects.length; i++) {
+                newSubjects[i] = subjects[i];
+            }
+            newSubjects[subjects.length] = subject;
+            subjects = newSubjects;
+            return subjects;
+        }
+
+        return subjects;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 }
-

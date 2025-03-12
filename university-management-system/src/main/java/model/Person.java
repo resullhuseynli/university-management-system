@@ -3,10 +3,15 @@ package model;
 import java.util.Objects;
 
 public class Person {
+
     private int id;
     private String name;
     private String surname;
     private int age;
+
+    public Person() {
+
+    }
 
     public Person(int id, String name, String surname, int age) {
         this.id = id;
