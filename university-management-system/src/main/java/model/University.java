@@ -20,9 +20,13 @@ public class University {
     public void addPeople(Person person) {
 
         for (int i = 0; i < people.length; i++) {
+
             if (people[i] == null) {
                 people[i] = person;
                 break;
+            }
+            if (people[i].getId().equals(person.getId())) {
+                System.out.println("Person with this ID already exists");
             }
         }
     }
