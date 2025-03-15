@@ -56,6 +56,10 @@ public class Student extends Person {
 
     public void updateGrades(int courseCode, Double newGrade) {
 
+        if (courses == null) {
+            System.out.println("There is no course!");
+            return;
+        }
         for (int i = 0; i < courses.length; i++) {
             if (courses[i].getCourseCode() == courseCode) {
                 grades[i] = newGrade;
@@ -111,7 +115,7 @@ public class Student extends Person {
                 "Name: " + getFullName() + '\n' +
                 "Age: " + getAge() + '\n' +
                 "Major: " + major + '\n' +
-                "Courses: " + (courses==null ? "There is no course!" : getCourseList()) +
+                "Courses: " + (courses==null ? "There is no course!" : getCourseList()) + '\n' +
                 "Grades: " + (grades==null ? "There is no grade!" : Arrays.toString(grades));
     }
 

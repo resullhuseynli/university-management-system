@@ -7,9 +7,9 @@ public class UniversitySystemDemo {
 
         University myUniversity = new University("UNEC", 100, 5);
 
-        Student s1 = new Student("S001", "Rasul Huseynli", 20, "Information Security");
-        Student s2 = new Student("S002", "Turkan Basirli", 21, "Information Security");
-        Student s3 = new Student("S003", "Mansura Badalova", 19, "Computer Sience");
+        Student s1 = new Student("S002", "Turkan Basirli", 21, "Information Security");
+        Student s2 = new Student("S003", "Mansura Badalova", 19, "Computer Science");
+        Student s3 = new Student("S001", "Rasul Huseynli", 20, "Information Security");
 
         Professor p1 = new Professor("P001", "Ramal Cabbarov", 40, "Digital Economy");
         Professor p2 = new Professor("P002", "Roza Misirli", 65, "Digital Economy");
@@ -32,9 +32,8 @@ public class UniversitySystemDemo {
         c1.addStudents(s1);
         c2.addStudents(s1);
 
-        s1.updateGrades(3, 90.0);
+        System.out.println(Arrays.toString(c1.getStudents()));
 
-        System.out.println(s1);
 
     }
 }
