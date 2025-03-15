@@ -1,28 +1,40 @@
 package model;
 
+import java.util.Arrays;
+
 public class UniversitySystemDemo {
     public static void main(String[] args) {
 
-        University myUniversity = new University("University of Economics", 100, 10);
+        University myUniversity = new University("UNEC", 100, 5);
 
-        Student student1 = new Student("S001", "John Doe", 20, "Computer Science");
-        Student student2 = new Student("S002", "Jane Doe", 21, "Computer Science");
-        Professor professor1 = new Professor("P001", "Dr. John Doe", 40, "Computer Science");
-        Course course1 = new Course(1, "Introduction to Computer Science", professor1);
+        Student s1 = new Student("S001", "Rasul Huseynli", 20, "Information Security");
+        Student s2 = new Student("S002", "Turkan Basirli", 21, "Information Security");
+        Student s3 = new Student("S003", "Mansura Badalova", 19, "Computer Sience");
 
-        professor1.addSubjects("Calculus");
+        Professor p1 = new Professor("P001", "Ramal Cabbarov", 40, "Digital Economy");
+        Professor p2 = new Professor("P002", "Roza Misirli", 65, "Digital Economy");
 
-        student1.enrollCourses(course1);
-        student2.enrollCourses(course1);
-        course1.addStudents(student1);
-        course1.addStudents(student2);
+        Course c1 = new Course(1, "Java Programming", p1);
+        Course c2 = new Course(2, "Python Programming", p2);
 
-        myUniversity.addPeople(student1);
-        myUniversity.addPeople(student2);
-        myUniversity.addPeople(professor1);
-        myUniversity.addCourses(course1);
+        myUniversity.addPeople(s1);
+        myUniversity.addPeople(s2);
+        myUniversity.addPeople(s3);
+        myUniversity.addPeople(p1);
+        myUniversity.addPeople(p2);
 
-        System.out.println(myUniversity.getPeople());
+        myUniversity.addCourses(c1);
+        myUniversity.addCourses(c2);
+
+        s1.enrollCourses(c1);
+        s1.enrollCourses(c2);
+
+        c1.addStudents(s1);
+        c2.addStudents(s1);
+
+        s1.updateGrades(3, 90.0);
+
+        System.out.println(s1);
 
     }
 }

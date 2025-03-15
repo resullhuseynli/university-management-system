@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class University {
 
     private String universityName;
@@ -24,8 +27,7 @@ public class University {
             if (people[i] == null) {
                 people[i] = person;
                 break;
-            }
-            if (people[i].getId().equals(person.getId())) {
+            } else if (people[i].getId().equals(person.getId())) {
                 System.out.println("Person with this ID already exists");
             }
         }
@@ -61,11 +63,34 @@ public class University {
             if (courses[i] == null) {
                 courses[i] = course;
                 break;
+            } else if (courses[i].getCourseCode() == course.getCourseCode()) {
+                System.out.println("Course with this code already exists");
+                break;
             }
         }
     }
 
     public String getUniversityName() {
         return universityName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        University that = (University) o;
+        return Objects.equals(universityName, that.universityName) && Objects.deepEquals(people, that.people) && Objects.deepEquals(courses, that.courses);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(universityName, Arrays.hashCode(people), Arrays.hashCode(courses));
+    }
+
+    @Override
+    public String toString() {
+        return "University: " + '\n' +
+                "University Name: " + universityName + '\n' +
+                "People: " + Arrays.toString(people) + '\n' +
+                "Courses: " + Arrays.toString(courses);
     }
 }

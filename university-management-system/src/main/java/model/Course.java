@@ -28,6 +28,20 @@ public class Course {
             students = new Student[1];
             students[0] = student;
         } else {
+            for (Student s : students) {
+                if (s != null && s.getId().equals(student.getId())) {
+                    System.out.println("Student with this ID already exists");
+                    return;
+                }
+            }
+            if (student.getCourses() != null) {
+                for (Course c : student.getCourses()) {
+                    if (c != null && c.getCourseCode() == courseCode) {
+                        System.out.println("Student already enrolled in this course");
+                        return;
+                    }
+                }
+            }
             Student[] newStudents = new Student[students.length + 1];
             for (int i = 0; i < students.length; i++) {
                 newStudents[i] = students[i];
@@ -57,10 +71,6 @@ public class Course {
         return students;
     }
 
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
-
     public Professor getProfessor() {
         return professor;
     }
@@ -86,7 +96,21 @@ public class Course {
         return "Course: " + '\n' +
                 "Course Code: " + courseCode + '\n' +
                 "Course Name: " + courseName + '\n' +
-                "Students: " + Arrays.toString(students) + '\n' +
-                "Professor: " + professor;
+                "Students: " + getStudentNames() + '\n' +
+                "Professor: " + professor.getFullName();
+    }
+
+    private String getStudentNames() {
+        StringBuilder result = new StringBuilder();
+        if (students == null) {
+            return "No students enrolled";
+        }
+        for (Student student : students) {
+            if (student == null) {
+                break;
+            }
+            result.append(student.getFullName()).append("\n");
+        }
+        return result.toString();
     }
 }

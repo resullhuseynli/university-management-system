@@ -38,7 +38,11 @@ public abstract class Person {
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if (age <= 0) {
+            System.out.println("Age cannot be negative.");
+        } else {
+            this.age = age;
+        }
     }
 
     @Override
