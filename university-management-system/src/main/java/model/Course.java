@@ -79,6 +79,32 @@ public class Course {
         this.professor = professor;
     }
 
+    public double getGPA() {
+        double sum = 0.0;
+        if (students == null) {
+            return 0.0;
+        }
+        for (Student student : students) {
+            if (student == null) {
+                break;
+            }
+            if (student.getCourses() == null) {
+                return 0.0;
+            }
+            for (int i = 0; i < student.getCourses().length; i++) {
+
+                if (student.getCourses()[i] == null) {
+                    break;
+                }
+                if (student.getCourses()[i].getCourseCode() == courseCode) {
+                    sum += student.getGrades()[i];
+                }
+            }
+        }
+        return sum / students.length;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

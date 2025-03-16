@@ -95,6 +95,9 @@ public class Student extends Person {
         return sum / grades.length;
     }
 
+    public Double[] getGrades() {
+        return grades;
+    }
 
     @Override
     public boolean equals(Object o) {
