@@ -22,6 +22,20 @@ public class Course {
         this.professor = professor;
     }
 
+    public void addNewStudent(Student student) {
+        if (students == null) {
+            students = new Student[1];
+            students[0] = student;
+        } else {
+            Student[] newStudents = new Student[students.length + 1];
+            for (int i = 0; i < students.length; i++) {
+                newStudents[i] = students[i];
+            }
+            newStudents[students.length] = student;
+            students = newStudents;
+        }
+    }
+
     public void addStudents(Student student) {
 
         if (students == null) {
@@ -34,14 +48,6 @@ public class Course {
                     return;
                 }
             }
-            if (student.getCourses() != null) {
-                for (Course c : student.getCourses()) {
-                    if (c != null && c.getCourseCode() == courseCode) {
-                        System.out.println("Student already enrolled in this course");
-                        return;
-                    }
-                }
-            }
             Student[] newStudents = new Student[students.length + 1];
             for (int i = 0; i < students.length; i++) {
                 newStudents[i] = students[i];
@@ -49,6 +55,7 @@ public class Course {
             newStudents[students.length] = student;
             students = newStudents;
         }
+        student.addNewCourse(this);
     }
 
     public int getCourseCode() {
@@ -126,7 +133,7 @@ public class Course {
                 "Professor: " + professor.getFullName();
     }
 
-    private String getStudentNames() {
+    public String getStudentNames() {
         StringBuilder result = new StringBuilder();
         if (students == null) {
             return "No students enrolled";

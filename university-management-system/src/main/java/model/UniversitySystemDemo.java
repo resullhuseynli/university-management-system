@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 public class UniversitySystemDemo {
     public static void main(String[] args) {
 
@@ -28,12 +26,14 @@ public class UniversitySystemDemo {
 
         s1.enrollCourses(c1);
         s1.enrollCourses(c2);
+        s2.enrollCourses(c1);
 
-        c1.addStudents(s1);
-        c2.addStudents(s1);
+        System.out.println(s1.getCourseList());
 
-        System.out.println(Arrays.toString(c1.getStudents()));
+        s1.updateGrades(1, 90.0);
+        s1.updateGrades(2, 85.0);
 
+        System.out.println(c1.getGPA());
 
     }
 }

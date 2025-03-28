@@ -42,6 +42,31 @@ public class Student extends Person {
             courses[0] = course;
             grades = new Double[1];
         } else {
+            for (Course c : courses) {
+                if (c != null && c.getCourseCode() == course.getCourseCode()) {
+                    System.out.println("Student already enrolled in this course");
+                    return;
+                }
+            }
+            Course[] newCourses = new Course[courses.length + 1];
+            Double[] newGrades = new Double[grades.length + 1];
+            for (int i = 0; i < courses.length; i++) {
+                newCourses[i] = courses[i];
+                newGrades[i] = grades[i];
+            }
+            newCourses[courses.length] = course;
+            this.courses = newCourses;
+            this.grades = newGrades;
+        }
+        course.addNewStudent(this);
+    }
+
+    public void addNewCourse(Course course) {
+        if (courses == null) {
+            courses = new Course[1];
+            courses[0] = course;
+            grades = new Double[1];
+        } else {
             Course[] newCourses = new Course[courses.length + 1];
             Double[] newGrades = new Double[grades.length + 1];
             for (int i = 0; i < courses.length; i++) {
@@ -122,7 +147,7 @@ public class Student extends Person {
                 "Grades: " + (grades==null ? "There is no grade!" : Arrays.toString(grades));
     }
 
-    private String getCourseList() {
+    public String getCourseList() {
         StringBuilder result = new StringBuilder();
         for (Course course : courses) {
             if (course == null) {
