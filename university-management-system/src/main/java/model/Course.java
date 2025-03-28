@@ -96,6 +96,7 @@ public class Course {
                 break;
             }
             if (student.getCourses() == null) {
+                System.out.println("Student has no courses");
                 return 0.0;
             }
             for (int i = 0; i < student.getCourses().length; i++) {
@@ -104,6 +105,10 @@ public class Course {
                     break;
                 }
                 if (student.getCourses()[i].getCourseCode() == courseCode) {
+                    if (student.getGrades()[i] == null) {
+                        System.out.println("Student has no grades");
+                        return 0.0;
+                    }
                     sum += student.getGrades()[i];
                 }
             }

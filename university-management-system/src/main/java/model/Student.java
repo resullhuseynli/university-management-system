@@ -112,10 +112,9 @@ public class Student extends Person {
     public Double getGPA() {
         double sum = 0.0;
         for (Double grade : grades) {
-            if (grade == null) {
-                break;
+            if (grade != null) {
+                sum += grade;
             }
-            sum += grade;
         }
         return sum / grades.length;
     }

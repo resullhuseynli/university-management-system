@@ -24,16 +24,16 @@ public class UniversitySystemDemo {
         myUniversity.addCourses(c1);
         myUniversity.addCourses(c2);
 
-        s1.enrollCourses(c1);
+        c1.addStudents(s1);
         s1.enrollCourses(c2);
-        s2.enrollCourses(c1);
+        c1.addStudents(s2);
 
-        System.out.println(s1.getCourseList());
+//        System.out.println(s1.getCourseList());
 
-        s1.updateGrades(1, 90.0);
-        s1.updateGrades(2, 85.0);
+        s1.updateGrades(1, 80.0);
+        s1.updateGrades(2, 90.0);
 
-        System.out.println(c1.getGPA());
+        System.out.println(s1.getGPA());
 
     }
 }
